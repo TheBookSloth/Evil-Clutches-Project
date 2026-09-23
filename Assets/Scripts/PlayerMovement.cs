@@ -19,4 +19,12 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -4.5f, 4.5f), 0);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Projectile")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
