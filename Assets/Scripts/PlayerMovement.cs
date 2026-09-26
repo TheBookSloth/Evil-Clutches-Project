@@ -22,7 +22,18 @@ public class PlayerMovement : MonoBehaviour
             transform.Translate(speed * Time.deltaTime * -transform.up);
         }
 
-        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -4.5f, 4.5f), 0);
+        //traveling right or left
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Translate(speed * Time.deltaTime * transform.right);
+        }
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Translate(speed * Time.deltaTime * -transform.right);
+        }
+
+
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8.5f, 4.25f), Mathf.Clamp(transform.position.y, -4.5f, 4.5f), 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
