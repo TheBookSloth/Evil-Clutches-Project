@@ -1,8 +1,13 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 4;
+    private int score = 0;
+
+    public TextMeshProUGUI scoreBox;
 
     // Update is called once per frame
     void Update()
@@ -24,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile")
         {
+            if (collision.GetComponent<ProjectileMovement>() != null) {
+                score += collision.GetComponent<ProjectileMovement>().points;
+                scoreBox.text = "Score: " + score;
+            }
             Destroy(collision.gameObject);
         }
     }

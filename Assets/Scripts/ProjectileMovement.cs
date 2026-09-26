@@ -9,6 +9,11 @@ public class ProjectileMovement : MonoBehaviour
     void Update()
     {
         transform.Translate(speed * Time.deltaTime * -transform.right);
+
+        if (transform.position.x < -10) {
+            Destroy(gameObject);
+        }
+    
     }
 
 
