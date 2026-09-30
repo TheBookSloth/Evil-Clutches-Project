@@ -42,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (collision.GetComponent<ProjectileMovement>() != null) {
                 score += collision.GetComponent<ProjectileMovement>().points;
+                
+                //Make sure score can't be negative
+                if (score < 0) score = 0;
+
                 scoreBox.text = "Score: " + score;
             }
             Destroy(collision.gameObject);
